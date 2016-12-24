@@ -1,4 +1,13 @@
-import { AddTodoAction, FetchTodosAction, RemoveTodoAction, ToggleTodoAction, UpdateTodoAction } from '../state/action';
+import {
+    AddTodoAction,
+    ClearCompletedTodosAction,
+    FetchTodosAction,
+    MarkAllTodosAction,
+    RemoveTodoAction,
+    SetFilterAction,
+    ToggleTodoAction,
+    UpdateTodoAction,
+} from '../state/action';
 import { BindAction, Store } from 'angular-reflux';
 
 import { Injectable } from '@angular/core';
@@ -66,6 +75,38 @@ export class TodoStore extends Store {
                 error => observer.error(error),
                 () => observer.complete()
             );
+        }).share();
+    }
+
+    @BindAction()
+    clearCompletedTodos(state: State, action: ClearCompletedTodosAction): Observable<State> {
+        return Observable.create((observer: Observer<State>) => {
+            this.service.clearCompleted().subscribe(
+                todos => observer.next({ todos: todos }),
+                error => observer.error(error),
+                () => observer.complete()
+            );
+        }).share();
+    }
+
+    @BindAction()
+    markAllTodos(state: State, action: MarkAllTodosAction): Observable<State> {
+        return Observable.create((observer: Observer<State>) => {
+            this.service.markAll(action.complete).subscribe(
+                todos => observer.next({ todos: todos }),
+                error => observer.error(error),
+                () => observer.complete()
+            );
+        }).share();
+    }
+
+    @BindAction()
+    setFilter(state: State, action: SetFilterAction): Observable<State> {
+        return Observable.create((observer: Observer<State>) => {
+            observer.next({
+                filter: action.filter
+            });
+            observer.complete();
         }).share();
     }
 

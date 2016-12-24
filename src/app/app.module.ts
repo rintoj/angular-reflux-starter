@@ -2,7 +2,6 @@ import { AppState, InternalStateType } from './app.service';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { createInputTransfer, createNewHosts, removeNgStyles } from '@angularclass/hmr';
 
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ENV_PROVIDERS } from './environment';
@@ -14,7 +13,6 @@ import { STORES } from './store';
 
 // Application wide providers
 const APP_PROVIDERS = [
-    ...APP_RESOLVER_PROVIDERS,
     ...STORES,
     ...SERVICES,
     AppState

@@ -73,6 +73,24 @@ export class TodoService {
         });
     }
 
+    clearCompleted(): Observable<Todo[]> {
+        return Observable.create((observer: Observer<Todo[]>) => {
+            this.todos = this.todos.filter(item => !item.completed);
+            observer.next(this.todos);
+            observer.complete();
+        });
+    }
+
+    markAll(complete: boolean): Observable<Todo[]> {
+        return Observable.create((observer: Observer<Todo[]>) => {
+            this.todos = this.todos.map(item => Object.assign({}, item, {
+                completed: complete
+            }));
+            observer.next(this.todos);
+            observer.complete();
+        });
+    }
+
     private generateId() {
         return btoa(Math.random() + '').substr(4, 6).toLowerCase();
     }

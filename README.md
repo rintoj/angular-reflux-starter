@@ -1,4 +1,4 @@
-# Angular2 Flux Starter
+# Angular Reflux Starter
 (forked from [AngularClass's Angular2 Webpack starter](https://github.com/AngularClass/angular2-webpack-starter))
 
 > An Angular 2 starter kit featuring [Angular 2](https://angular.io) and [Angular 4](https://github.com/angular/angular/tree/4.0.0-beta.0) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/),
@@ -28,10 +28,10 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 ```bash
 # clone our repo
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/rintoj/angular2-reflux-starter
+git clone --depth 1 https://github.com/rintoj/angular-reflux-starter
 
 # change directory to our repo
-cd angular2-reflux-starter
+cd angular-reflux-starter
 
 # install the repo with npm
 npm install
@@ -65,7 +65,7 @@ go to [http://127.0.0.1:3000](http://127.0.0.1:3000) or [http://localhost:3000](
 ## File Structure
 We use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
 ```
-angular2-reflux-starter/
+angular-reflux-starter/
  |
  ├──config/                    * our configuration
  |   ├──helpers.js             * helper functions for our configuration files
@@ -336,7 +336,7 @@ Follow me:
 | [Youtube](https://youtube.com/+RintoJoseMankudy)
 
 ## Versions
-[Check CHANGELOG](https://github.com/rintoj/angular2-reflux-starter/blob/master/CHANGELOG.md)
+[Check CHANGELOG](https://github.com/rintoj/angular-reflux-starter/blob/master/CHANGELOG.md)
 
 # License
 [The MIT License (MIT)](/LICENSE)
