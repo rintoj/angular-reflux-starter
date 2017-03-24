@@ -6,31 +6,37 @@ import { FetchTodosAction } from './state/action';
 import { State } from './state';
 import { Stores } from './store';
 
+export function selectTodos(state: State) {
+  return state.todos;
+}
+
+export function selectFilter(state: State) {
+  return state.filter;
+}
+
 @Component({
-    selector: 'todo-app',
-    template: `
-        <div id="todoapp">
-            <todo-header></todo-header>
-            <todo-list [todos]="todos" [filter]="filter"></todo-list>
-            <todo-footer [todos]="todos" [filter]="filter"></todo-footer>
-        </div>
+  selector: 'todo-app',
+  template: `
+    <div id="todoapp">
+      <todo-header></todo-header>
+      <todo-list [todos]="todos" [filter]="filter"></todo-list>
+      <todo-footer [todos]="todos" [filter]="filter"></todo-footer>
+    </div>
     `,
-    styles: [
-        require('./app.component.scss')
-    ],
-    encapsulation: ViewEncapsulation.None
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
 
-    @BindData((state: State) => state.todos)
-    protected todos: Todo[];
+  @BindData(selectTodos)
+  todos: Todo[];
 
-    @BindData((state: State) => state.filter)
-    protected filter: TodoFilter;
+  @BindData(selectFilter)
+  filter: TodoFilter;
 
-    constructor(public stores: Stores) { }
+  constructor(public stores: Stores) { }
 
-    ngOnInit() {
-        new FetchTodosAction().dispatch();
-    }
+  ngOnInit() {
+    new FetchTodosAction().dispatch();
+  }
 }
